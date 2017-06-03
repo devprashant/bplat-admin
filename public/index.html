@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<link rel="stylesheet" href="public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="public/css/bootstrap-clockpicker.min.css">
+	<link rel="stylesheet" href="public/css/font-awesome.min.css">
+	<link rel="stylesheet" href="public/css/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="public/css/style.css">
+
+</head>
+<!-- 
+	-- business name can be any name
+	-- location can be fetched from server or from google api
+	-- timings can be string or epoch
+	-- famous for can be anything, related to category
+	-- views depends on customer visiting the page
+	-- average rating related to customer rating
+	-- category can be any string, need to be managed -->
+<body>
+	<div class="container">
+		<div class="row well">
+			<form method="POST" id="bizProfileForm" action="/api/admin/add" onkeypress="return event.keyCode != 13;">
+				<div class="form-group">
+					<label for="biz-name">Business Name</label>
+					<input type="text" class="form-control" id="biz-name" name="name" placeholder="Enter name of business">
+				</div>
+				<div class="form-group">
+					<label for="location">Location</label>
+					<input type="text" class="form-control" id="biz-location" placeholder="Enter location" name="location">
+				</div>
+				<div class="form-group">
+					<label for="city">City</label>
+					<input type="text" class="form-control" id="city" placeholder="Enter City name" name="city">
+				</div>
+				<div class="form-group">
+					<label for="product">Product</label>
+					<input type="text" class="form-control" id="product"  name="category.product" data-role="tagsinput">
+				</div>
+				<div class="checkbox">
+					<label for="">
+						<input type="checkbox">Check me out
+					</label>
+				</div>
+				<button class="btn btn-default" type="submit">Register</button>
+			</form>			
+		</div>
+	</div>
+	<div class="container">
+		<div class="row well">
+			<label for="responseWdiget">Response Widget</label>
+			<div id="responseWidget">Response will appear here</div>
+			
+		</div>
+	</div>
+	<script src="public/js/jquery-3.2.1.min.js" type="text/javascript" ></script>
+	<script src="public/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="public/js/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+	<script>
+		$(function(){
+			$('input[name="category.product"]')
+				.change(function(){
+					$('input[name="category.product"]')
+					  .val(JSON.stringify($('input[name="category.product"]').tagsinput('items')));
+				});
+
+		});
+	</script>
+	<script>
+		$(function(){
+			$("#bizProfileForm").submit(function(e){				
+
+				var actionURL = e.currentTarget.action;
+				
+				console.log($('input[name="category.product"]').val());
+				$.ajax({
+					url: actionURL,
+					type: 'POST',
+					dataType: 'json',
+					data: $("#bizProfileForm").serialize(),
+					success: function(data){
+						// console.log(data);
+						$('#responseWidget').html(JSON.stringify(data));
+					},
+					error: function(){
+						
+						$('#responseWidget').html("not ok ");
+					}
+				});
+				e.preventDefault();
+			})
+		})
+	</script>	
+</body>
+</html>

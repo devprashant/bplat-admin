@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>	
+	<link rel="stylesheet" href="public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="public/css/bootstrap-clockpicker.min.css">
+	<link rel="stylesheet" href="public/css/font-awesome.min.css">
+	<link rel="stylesheet" href="public/css/style.css">
+</head>
+<!-- 
+	-- business name can be any name
+	-- location can be fetched from server or from google api
+	-- timings can be string or epoch
+	-- famous for can be anything, related to category
+	-- views depends on customer visiting the page
+	-- average rating related to customer rating
+	-- category can be any string, need to be managed -->
+<body>
+	<div class="container">
+		<div class="row well">
+			<form method="POST" action="/api/admin/add">
+				<div class="form-group">
+					<label for="biz-name">Business Name</label>
+					<input type="text" class="form-control" id="biz-name" name="name" placeholder="Enter name of business">
+				</div>
+				<div class="form-group">
+					<label for="location">Location</label>
+					<input type="text" class="form-control" id="biz-location" placeholder="Enter location" name="location">
+				</div>
+				<div class="form-group">
+					<label for="timings">Timings</label>
+					<input type="text" class="form-control" id="timings" placeholder="Enter timings" name="timing">
+				</div>
+				<div class="form-group">
+					<label for="famous-for">Famous For</label>
+					<input type="text" class="form-control" id="biz-famous-for" placeholder="Famous Serving" name="famous_for">
+				</div>
+				<div class="form-group">
+					<label for="view">Views</label>
+					<input type="text" class="form-control" id="biz-views" placeholder="Customer views" name="views">
+				</div>
+				<div class="form-group">
+					<label for="average-rating">Average Rating</label>
+					<input type="text" class="form-control" id="average-rating" placeholder="Average Rating" name="average_rating">
+				</div>
+				<div class="form-group">
+					<label for="category">Category</label>
+					<input type="text" class="form-control" id="biz-category" placeholder="Enter Category" name="category">
+				</div>
+				<div class="checkbox">
+					<label for="">
+						<input type="checkbox">Check me out
+					</label>
+				</div>
+				<button class="btn btn-default" type="submit">Submit</button>
+			</form>			
+		</div>
+	</div>
+	<script type="text/javascript" src="public/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="public/js/bootstrap.min.js"></script>	
+</body>
+</html>

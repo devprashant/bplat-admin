@@ -1,0 +1,15 @@
+{
+  "name": "obj-proj",
+  "version": "1.0.0",
+  "description": "sdf",
+  "main": "bplat.js",
+  "repository": "sd",
+  "author": "devp",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.9",
+    "morgan": "^1.8.2"
+  }
+}
